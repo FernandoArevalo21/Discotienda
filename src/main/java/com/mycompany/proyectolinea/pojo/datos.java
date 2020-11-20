@@ -33,7 +33,7 @@ public class datos {
      public void cagarDatosArtista(String nombre_artista, String genero_musical, String imagen, String nacionalidad, String fecha_nacimiento){
         try{
            st= conexion.conexion().createStatement();
-            String query= "INSERT INTO artista(nombre_artista,genero_musical,imagen,nacionalidad, fecha_nacimiento) VALUES ('"+nombre_artista+"','"+genero_musical+"','aa','"+nacionalidad+"','"+fecha_nacimiento+"')";
+            String query= "INSERT INTO artista(nombre_artista,genero_musical,imagen,nacionalidad, fecha_nacimiento) VALUES ('"+nombre_artista+"','"+genero_musical+"','"+imagen+"','"+nacionalidad+"','"+fecha_nacimiento+"')";
             System.out.println(query);
         st.executeUpdate(query);
           System.out.println("Usuario ingresado");  

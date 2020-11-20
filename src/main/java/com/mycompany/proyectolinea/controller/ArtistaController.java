@@ -4,31 +4,56 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyectolinea.controller;
+
 import com.mycompany.proyectolinea.pojo.datos;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.Serializable;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.file.UploadedFile;
 
 /**
  *
  * @author usuario
  */
 @Named(value = "artistaController")
-@RequestScoped
-public class ArtistaController {
- private String nombre_artista;
- private String genero_musical;
- private String imagen;
- private String nacionalidad;
- private String fecha_nacimiento;
+@SessionScoped
+public class ArtistaController implements Serializable {
+
+    private String nombre_artista;
+    private String genero_musical;
+    private String imagen;
+    private String nacionalidad;
+    private String fecha_nacimiento;
+
     /**
      * Creates a new instance of ArtistaController
      */
     public ArtistaController() {
     }
-    public void artista(){
-        System.out.println("Entro"+nombre_artista+""+genero_musical+""+nacionalidad+""+fecha_nacimiento);
-        datos dt= new datos();
-        dt.cagarDatosArtista(nombre_artista,genero_musical,imagen,nacionalidad,fecha_nacimiento);
+
+    String ruta = "C:/xampp/imagenesProyectoLinea/";
+
+    public void imagen(FileUploadEvent event) {
+        UploadedFile uploadedFile = event.getFile();
+        String filename = uploadedFile.getFileName();
+        byte[] contents = uploadedFile.getContent();
+        try {
+            this.ruta += filename;
+            FileOutputStream fileOutputStream = new FileOutputStream(this.ruta);
+            fileOutputStream.write(contents);
+            fileOutputStream.close();
+        } catch (Exception e) {
+            System.err.print(e);
+        }
+    }
+
+    public void artista() {
+        System.out.println("Entro" + nombre_artista + "" + genero_musical + "" + nacionalidad + "" + fecha_nacimiento+""+ruta);
+        datos dt = new datos();
+        dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad, fecha_nacimiento);
     }
 
     public String getNombre_artista() {
@@ -71,5 +96,11 @@ public class ArtistaController {
         this.fecha_nacimiento = fecha_nacimiento;
     }
 
-   
+    /*public Date getFecha_nacimiento() {
+     return fecha_nacimiento;
+     }
+
+     public void setFecha_nacimiento(Date fecha_nacimiento) {
+     this.fecha_nacimiento = fecha_nacimiento;
+     }*/
 }

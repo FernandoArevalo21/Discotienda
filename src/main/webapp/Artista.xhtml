@@ -6,9 +6,9 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-            <link href="https://fonts.googleapis.com/css2?family=Fredoka+One" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One" rel="stylesheet"></link>
         <link rel="preconnect" href="https://fonts.gstatic.com"></link>
-            <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
         <title>Artista</title>
         <style>
             body{
@@ -45,17 +45,21 @@
         <h1 class="titulo">Disco Stu</h1>
         <fieldset class="formulario">
             <legend class="datos">Registrar artista</legend>
-            <h:form>
+            <h:form enctype="multipart/form-data">
+                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
                 <p:outputLabel  value="Nombre artista:" class="informacion"/>
                 <p:inputText   value="#{artistaController.nombre_artista}"/>
                 <p:outputLabel  value="Genero musical:" class="informacion"/>
                 <p:inputText   value="#{artistaController.genero_musical}"/>
-                <p:outputLabel  value="Imagen:" class="informacion" />
                 <p:outputLabel  value="Nacionalidad:"  class="informacion"/>
                 <p:inputText   value="#{artistaController.nacionalidad}"/>
-                <p:outputLabel  value="Fecha nacimiento:" class="informacion" />
-                <p:inputText   value="#{artistaController.fecha_nacimiento}"/>
-                <p:commandButton actionListener="#{artistaController.artista()}"  value="Registrar" class="btn_insertar"  ></p:commandButton> 
+                <!--p:outputLabel  value="Fecha nacimiento:" class="informacion" />
+                <p:inputText   value="#{artistaController.fecha_nacimiento}"/-->
+                 <p:outputLabel  value="Fecha Nacimiento:" />
+                 <p:calendar  value="#{artistaController.fecha_nacimiento}" pattern="yyyy-MM-dd "/>
+                <p:outputLabel  value="Imagen:" class="informacion" />
+                <p:fileUpload listener="#{artistaController.imagen}" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(jpg|jpeg|png)$/"/>
+                <p:commandButton actionListener="#{artistaController.artista()}"  value="Registrar" class="btn_insertar"  />
             </h:form>
         </fieldset>
     </h:body>
