@@ -46,20 +46,18 @@
         <fieldset class="formulario">
             <legend class="datos">Registrar artista</legend>
             <h:form enctype="multipart/form-data">
-                <p:growl id="msgs" showDetail="true" skipDetailIfEqualsSummary="true" />
+               
                 <p:outputLabel  value="Nombre artista:" class="informacion"/>
                 <p:inputText   value="#{artistaController.nombre_artista}"/>
                 <p:outputLabel  value="Genero musical:" class="informacion"/>
                 <p:inputText   value="#{artistaController.genero_musical}"/>
                 <p:outputLabel  value="Nacionalidad:"  class="informacion"/>
                 <p:inputText   value="#{artistaController.nacionalidad}"/>
-                <!--p:outputLabel  value="Fecha nacimiento:" class="informacion" />
-                <p:inputText   value="#{artistaController.fecha_nacimiento}"/-->
-                 <p:outputLabel  value="Fecha Nacimiento:" />
-                 <p:calendar  value="#{artistaController.fecha_nacimiento}" pattern="yyyy-MM-dd "/>
+                <h:outputText value="Fecha Nacimiento:" />
+                <p:calendar value="#{artistaController.fecha_nacimiento}"  ></p:calendar>     
                 <p:outputLabel  value="Imagen:" class="informacion" />
                 <p:fileUpload listener="#{artistaController.imagen}" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(jpg|jpeg|png)$/"/>
-                <p:commandButton actionListener="#{artistaController.artista()}"  value="Registrar" class="btn_insertar"  />
+                <p:commandButton action="#{artistaController.artista(artistaController.fecha_nacimiento)}"  value="Registrar" />
             </h:form>
         </fieldset>
     </h:body>

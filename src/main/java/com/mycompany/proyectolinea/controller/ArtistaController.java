@@ -7,8 +7,10 @@ package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import org.primefaces.event.FileUploadEvent;
@@ -26,7 +28,7 @@ public class ArtistaController implements Serializable {
     private String genero_musical;
     private String imagen;
     private String nacionalidad;
-    private String fecha_nacimiento;
+    private Date fecha_nacimiento;
 
     /**
      * Creates a new instance of ArtistaController
@@ -49,11 +51,14 @@ public class ArtistaController implements Serializable {
             System.err.print(e);
         }
     }
-
-    public void artista() {
+String fecha;
+    public void artista(Date fecha_nacimiento) {
         System.out.println("Entro" + nombre_artista + "" + genero_musical + "" + nacionalidad + "" + fecha_nacimiento+""+ruta);
+        SimpleDateFormat dateformat = new SimpleDateFormat("YYY-MM-dd");
+        fecha=(dateformat.format(fecha_nacimiento));
+        
         datos dt = new datos();
-        dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad, fecha_nacimiento);
+        dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad,fecha);
     }
 
     public String getNombre_artista() {
@@ -88,19 +93,20 @@ public class ArtistaController implements Serializable {
         this.imagen = imagen;
     }
 
-    public String getFecha_nacimiento() {
+    /*public String getFecha_nacimiento() {
         return fecha_nacimiento;
     }
 
     public void setFecha_nacimiento(String fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
+    }*/
+
+    public Date getFecha_nacimiento() {
+        return fecha_nacimiento;
     }
 
-    /*public Date getFecha_nacimiento() {
-     return fecha_nacimiento;
-     }
-
-     public void setFecha_nacimiento(Date fecha_nacimiento) {
-     this.fecha_nacimiento = fecha_nacimiento;
-     }*/
+    public void setFecha_nacimiento(Date fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+    
 }
