@@ -65,4 +65,14 @@ public class datos {
              e.setNextException(e);
          }
      }
+     public void cargarCanciones(String nombre_cancion, int precio_cancion, String id_album){
+          try{
+            st = conexion.conexion().createStatement();
+            String query = "INSERT INTO canciones(nombre_cancion,precio_cancion,id_album) VALUES ('" + nombre_cancion + "','" + precio_cancion + "','" + id_album + "')";
+            st.executeUpdate(query);
+            System.out.println("Album ingresado");
+         }catch(SQLException e){
+             e.setNextException(e);
+         }
+     }
 }

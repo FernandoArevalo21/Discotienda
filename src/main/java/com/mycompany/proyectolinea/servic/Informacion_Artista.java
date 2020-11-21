@@ -50,4 +50,20 @@ public class Informacion_Artista {
         }
         return lista;
     }
+        public List<String> listarAlbun(){
+        List<String>lista = null;
+        try {
+            st = conexion.conexion().createStatement();
+            ResultSet rs = st.executeQuery("SELECT id_albun, nombre_albun FROM albun");
+            System.out.println("Consulta realizada");
+            lista = new ArrayList();
+            while (rs.next()) {
+                lista.add(Integer.toString(rs.getInt("id_albun"))+" "+rs.getString("nombre_albun"));
+                //lista.add(rs.getString("nombre_artista"));
+            }
+        } catch (SQLException e) {
+            e.setNextException(e);
+        }
+        return lista;
+    }
 }
