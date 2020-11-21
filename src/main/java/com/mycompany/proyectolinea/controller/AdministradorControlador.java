@@ -5,7 +5,10 @@
  */
 package com.mycompany.proyectolinea.controller;
 
+import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import java.io.IOException;
+import java.util.List;
+import java.util.Spliterator;
 import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -24,13 +27,16 @@ import org.primefaces.model.menu.MenuModel;
 @RequestScoped
 public class AdministradorControlador {
 
+    private List<String> datosAdministrador;
+    private MenuModel model;
+
+
     /**
      * Creates a new instance of AdministradorController
      */
-    private MenuModel model;
- 
     @PostConstruct
     public void init() {
+        
         model = new DefaultMenuModel();
  
         //First submenu
@@ -77,7 +83,13 @@ public class AdministradorControlador {
  
         model.getElements().add(secondSubmenu);
     }
- 
+    public void cargarDatos() {
+        Informacion_Artista artista = new Informacion_Artista();
+        datosAdministrador = artista.listarAdministrador();
+        for (String datos : datosAdministrador) {
+            System.out.println(datos);   
+        }   
+    }
     public MenuModel getModel() {
         return model;
     }
@@ -104,6 +116,12 @@ public class AdministradorControlador {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
-    
+        public List<String> getDatosAdministrador() {
+        return datosAdministrador;
+    }
+
+    public void setDatosAdministrador(List<String> datosAdministrador) {
+        this.datosAdministrador = datosAdministrador;
+    }
 }
 
