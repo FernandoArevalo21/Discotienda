@@ -29,8 +29,14 @@ public class AdministradorControlador {
 
     private List<String> datosAdministrador;
     private MenuModel model;
-
-
+    
+    public AdministradorControlador(){
+        Informacion_Artista artista = new Informacion_Artista();
+        datosAdministrador = artista.listarAdministrador();
+        for (String datos : datosAdministrador) {
+            System.out.println(datos);
+        }
+    }
     /**
      * Creates a new instance of AdministradorController
      */
