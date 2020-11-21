@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyectolinea.controller;
-
 import com.mycompany.proyectolinea.servic.Loginservice;
 import java.io.IOException;
 import java.sql.SQLException;

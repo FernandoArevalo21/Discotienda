@@ -61,18 +61,18 @@
             </p:growl>
             <p:panelMenu style="width:300px">
                 <p:submenu label="Crear artista">
-                    <p:menuitem value="Crear artista" icon="pi pi-refresh" action="#{administradorControlador.update()}" />
+                    <p:menuitem value="Crear artista" icon="pi pi-refresh" action="#{adminController.update()}" />
 
                 </p:submenu>
                 <p:submenu label="Crear albun">
-                    <p:menuitem value="Crear albun" action="#{administradorControlador.delete()}"  ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Crear albun" action="#{adminController.delete()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:submenu label="Crear Cancion">
-                    <p:menuitem value="Crear Cancion" action="#{administradorControlador.crearCancion()}"  ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Crear Cancion" action="#{adminController.crearCancion()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Crear administrador">
-                    <p:menuitem value="Crear Administrador" action="#{administradorControlador.registroadmin()}"  ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Crear Administrador" action="#{adminController.registroadmin()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Ver informes" >
@@ -86,7 +86,7 @@
                     </p:submenu>
                 </p:submenu>
             </p:panelMenu>
-                <h:commandButton value="datos" actionListener="#{administradorControlador.cargarDatos()}"></h:commandButton>
+                <h:commandButton value="datos" actionListener="#{adminController.cargarDatos()}"></h:commandButton>
         </h:form>
         </div>
         <div class="informacionPersonal clearfix">
