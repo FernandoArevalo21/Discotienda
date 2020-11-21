@@ -5,6 +5,8 @@
  */
 package com.mycompany.proyectolinea.controller;
 
+import com.mycompany.proyectolinea.servic.Informacion_Artista;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -17,10 +19,14 @@ import javax.enterprise.context.RequestScoped;
 public class CancionesController {
     private String nombre_cancion;
     private String precio_cancion;
+    private String albunSeleccionado;
+    private List<String> listaAlbun;
     /**
      * Creates a new instance of CancionesController
      */
     public CancionesController() {
+        Informacion_Artista artista = new Informacion_Artista();
+        listaAlbun = artista.listarAlbun();
     }
     public void registrocancion(){
         System.out.println("Entro"+nombre_cancion+""+precio_cancion);
@@ -40,5 +46,22 @@ public class CancionesController {
     public void setPrecio_cancion(String precio_cancion) {
         this.precio_cancion = precio_cancion;
     }
+
+    public String getAlbunSeleccionado() {
+        return albunSeleccionado;
+    }
+
+    public void setAlbunSeleccionado(String albunSeleccionado) {
+        this.albunSeleccionado = albunSeleccionado;
+    }
+
+    public List<String> getListaAlbun() {
+        return listaAlbun;
+    }
+
+    public void setListaAlbun(List<String> listaAlbun) {
+        this.listaAlbun = listaAlbun;
+    }
+    
     
 }
