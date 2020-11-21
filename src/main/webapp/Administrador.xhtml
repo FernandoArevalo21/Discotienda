@@ -36,7 +36,7 @@
             }
             div.informacionPersonal{
                 float: right;
-                width: 988px;
+                width: 887px;
                 height: 389px;
                 background:rgb(171,241,232);
                 margin-right: 20px;
@@ -68,11 +68,11 @@
                     <p:menuitem value="Crear albun" action="#{administradorControlador.delete()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:submenu label="Crear Cancion">
-                    <p:menuitem value="Crear Cancion" action="#{administradorController.delete}"  ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Crear Cancion" action="#{administradorControlador.crearCancion()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Crear administrador">
-                    <p:menuitem value="Crear Administrador" action="#{administradorControlador.delete()}"  ajax="false" icon="pi pi-times"/>
+                    <p:menuitem value="Crear Administrador" action="#{administradorControlador.registroadmin()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
                 <p:separator />
                 <p:submenu label="Ver informes" >

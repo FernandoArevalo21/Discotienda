@@ -91,9 +91,15 @@ public class AdministradorControlador {
     }
 
     public void delete() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Crearalbum.xhtml");
+    }
+        public void crearCancion() throws IOException {
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Crearcanciones.xhtml");
+    }
+     
+        public void registroadmin() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Registroadministrador.xhtml");
     }
- 
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);

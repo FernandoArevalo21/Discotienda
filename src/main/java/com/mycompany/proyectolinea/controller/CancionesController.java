@@ -8,9 +8,11 @@ package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
+import java.io.IOException;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -31,7 +33,7 @@ public class CancionesController {
         Informacion_Artista artista = new Informacion_Artista();
         listaAlbun = artista.listarAlbun();
     }
-    public void registrocancion(){
+    public void registrocancion() throws IOException{
         System.out.println("Entro"+nombre_cancion+""+precio_cancion);  
         String id_albums = albunSeleccionado;
         String[] parts = id_albums.split(" ");
@@ -40,6 +42,7 @@ public class CancionesController {
         ifa.informacionArtista();
         datos dt= new datos();
          dt.cargarCanciones(nombre_cancion,precio_cancion,id_album);
+          FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
     }
     public String getNombre_cancion() {
         return nombre_cancion;

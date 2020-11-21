@@ -7,12 +7,14 @@ package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
@@ -52,13 +54,14 @@ public class ArtistaController implements Serializable {
         }
     }
 String fecha;
-    public void artista(Date fecha_nacimiento) {
+    public void artista(Date fecha_nacimiento) throws IOException {
         System.out.println("Entro" + nombre_artista + "" + genero_musical + "" + nacionalidad + "" + fecha_nacimiento+""+ruta);
         SimpleDateFormat dateformat = new SimpleDateFormat("YYY-MM-dd");
         fecha=(dateformat.format(fecha_nacimiento));
         
         datos dt = new datos();
         dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad,fecha);
+         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
     }
 
     public String getNombre_artista() {

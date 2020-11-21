@@ -6,8 +6,10 @@
 package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
+import java.io.IOException;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -27,10 +29,11 @@ public class RegistroadController {
      */
     public RegistroadController() {
     }
-    public void registro(){
+    public void registro() throws IOException{
         System.out.println(nombre+""+apellido+""+correo+""+username+""+password);
         datos dt= new datos();
         dt.cargarDatosAdmin(nombre, apellido, correo, username, password);
+         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
     }
 
     public String getNombre() {

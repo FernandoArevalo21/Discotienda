@@ -6,6 +6,7 @@
 package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -33,10 +34,11 @@ public class RegistroController {
     public RegistroController() {
        
     }
-    public void registro(){
+    public void registro() throws IOException{
          System.out.println(nombre+""+apellido+""+correo+""+username+""+password);
          datos dt= new datos();
          dt.cargarDatosComprador(nombre, apellido,correo,username,password);
+          FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
     }
 
     public String getNombre() {

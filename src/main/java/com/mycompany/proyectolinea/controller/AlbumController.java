@@ -7,9 +7,11 @@ package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.datos;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
+import java.io.IOException;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -49,7 +51,7 @@ public class AlbumController {
         listaArtista = artista.listar();
     }
 
-    public void registroalbum() throws ClassNotFoundException {
+    public void registroalbum() throws ClassNotFoundException, IOException {
         System.out.println("Entro" + " " + nombre_album + " " + precio_album+" "+artistaSeleccionado);  
         String id_artistas = artistaSeleccionado;
         String[] parts = id_artistas.split(" ");
@@ -58,6 +60,7 @@ public class AlbumController {
         ifa.informacionArtista();
         datos dt= new datos();
          dt.cargarAlbum(nombre_album,precio_album,id_artista);
+          FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
     }
 
     public void mostrarDatos() {
