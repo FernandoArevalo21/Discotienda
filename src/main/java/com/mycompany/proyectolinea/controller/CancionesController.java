@@ -5,6 +5,7 @@
  */
 package com.mycompany.proyectolinea.controller;
 
+import com.mycompany.proyectolinea.servic.Informacion_album;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -21,9 +22,10 @@ public class CancionesController {
      * Creates a new instance of CancionesController
      */
     public CancionesController() {
+        Informacion_album album = new Informacion_album();
     }
     public void registrocancion(){
-        System.out.println("Entro"+nombre_cancion+""+precio_cancion);
+        System.out.println("Entro"+nombre_cancion+""+precio_cancion);       
     }
     public String getNombre_cancion() {
         return nombre_cancion;
