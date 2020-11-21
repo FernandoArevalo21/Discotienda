@@ -22,13 +22,14 @@ public class AdminController {
      * Creates a new instance of AdminController
      */
     public AdminController() {
-        datosAdministrador = artista.listarAdministrador();
+        //datosAdministrador = artista.listarAdministrador();
+        datosAdministrador = artista.listarAdministrador(null, null);
         for (String datos : datosAdministrador) {
             System.out.println(datos);   
         }  
     }
     public void cargarDatos() {
-        datosAdministrador = artista.listarAdministrador();
+        datosAdministrador = artista.listarAdministrador(null,null);
         for (String datos : datosAdministrador) {
             System.out.println(datos);   
         }   

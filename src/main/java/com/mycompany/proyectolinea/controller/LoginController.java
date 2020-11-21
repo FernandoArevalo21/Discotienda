@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyectolinea.controller;
+import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import com.mycompany.proyectolinea.servic.Loginservice;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -30,6 +31,8 @@ String password;
     public void Login() throws IOException{
     try {
         System.out.println("Entro " + correo + " " + password);
+        Informacion_Artista info= new Informacion_Artista();
+        info.listarAdministrador(correo,password);
         Loginservice service = new Loginservice();
         if(service.VerDatosComprador(correo,password).equals("Admin")){
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
