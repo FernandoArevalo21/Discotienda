@@ -24,10 +24,10 @@ public class IndexController {
     public IndexController() {
     }
     public void login() throws IOException {
-       FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Login.xhtml");
+       FacesContext.getCurrentInstance().getExternalContext().redirect("/Discotienda/faces/Login.xhtml");
     }
     public void registro() throws IOException{
-        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Registrocomprador.xhtml");
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/Discotienda/faces/Registrocomprador.xhtml");
     }
     
 }

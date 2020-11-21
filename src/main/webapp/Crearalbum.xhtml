@@ -2,18 +2,67 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link href="https://fonts.googleapis.com/css2?family=Fredoka+One" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Special+Elite" rel="stylesheet"></link>
+                
+                
+                <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link href="https://fonts.googleapis.com/css2?family=Nerko+One" rel="stylesheet"></link>
+        <title>Crear albunes</title>
+        <style>
+            body{
+                background: rgb(223,232,231);
+            }
+            h1.titulo{
+                text-align: center;
+                font-family: 'Shadows Into Light', cursive;
+                font-size: 60px;
+            }
+            legend.datos{
+                font-family: 'Fredoka One', cursive;
+                font-size: 28px;
+            }
+            fieldset.formulario{
+                margin: 0 auto;
+                width: 100px;
+                height: 380px;
+            }
+            .btn_insertar{
+                margin-top: 20px;
+                font-family: 'Special Elite', cursive;
+                color: black;
+            }
+            .informacion{
+                font-family: 'Special Elite', cursive;
+            }
+            .menu{
+                margin-top: 20px;
+                font-family: 'Special Elite', cursive;
+            }
+        </style>
     </h:head>
     <h:body>
-        <h:form>
-      <p:outputLabel  value="Nombre del album:" class="informacion"/>
-            <p:inputText   value="#{albumController.nombre_album}"/>
-            <p:outputLabel  value="Precio del album:" class="informacion"/>
-            <p:inputText   value="#{albumController.precio_album}"/>
-            <p:commandButton actionListener="#{albumController.registroalbum()}"  value="Registrar"   ></p:commandButton> 
-        </h:form>
+        <h1 class="titulo">Disco Stu</h1>
+        <fieldset class="formulario">
+            <legend class="datos">Registrar Albun</legend>
+            <h:form>
+                <p:outputLabel  value="Nombre del album:" class="informacion"/>
+                <p:inputText   value="#{albumController.nombre_album}"/>
+                <p:outputLabel  value="Precio del album:" class="informacion"/>
+                <p:inputText   value="#{albumController.precio_album}"/>
+                <h:selectOneMenu value="#{albumController.artistaSeleccionado}" class="menu">
+                    <f:selectItems value="#{albumController.listaArtista}"/>
+                </h:selectOneMenu>
+                <p:commandButton actionListener="#{albumController.registroalbum()}"  value="Registrar" class="btn_insertar"   ></p:commandButton> 
+            </h:form>
+        </fieldset>
     </h:body>
 </html>
 

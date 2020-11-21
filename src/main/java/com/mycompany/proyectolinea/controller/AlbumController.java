@@ -6,6 +6,7 @@
 package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
+import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 
@@ -16,17 +17,49 @@ import javax.enterprise.context.RequestScoped;
 @Named(value = "albumController")
 @RequestScoped
 public class AlbumController {
-private String nombre_album;
-private int precio_album;
+
+    private String nombre_album;
+    private int precio_album;
+    private String artistaSeleccionado;
+
+    public String getArtistaSeleccionado() {
+        return artistaSeleccionado;
+    }
+
+    public void setArtistaSeleccionado(String artistaSeleccionado) {
+        this.artistaSeleccionado = artistaSeleccionado;
+    }
+    private List<String> listaArtista;
+
+    public List<String> getListaArtista() {
+        return listaArtista;
+    }
+
+    public void setListaArtista(List<String> listaArtista) {
+        this.listaArtista = listaArtista;
+    }
+
     /**
      * Creates a new instance of AlbumController
      */
     public AlbumController() {
+        Informacion_Artista artista = new Informacion_Artista();
+        listaArtista = artista.listar();
     }
-    public void registroalbum() throws ClassNotFoundException{
-        System.out.println("Entro"+""+nombre_album+""+precio_album);
+
+    public void registroalbum() throws ClassNotFoundException {
+        System.out.println("Entro" + " " + nombre_album + " " + precio_album+" "+artistaSeleccionado);
         Informacion_Artista ifa = new Informacion_Artista();
         ifa.informacionArtista();
+    }
+
+    public void mostrarDatos() {
+        Informacion_Artista artista = new Informacion_Artista();
+        listaArtista = artista.listar();
+        System.out.println("EL tamaño de la lista es: " + listaArtista.size());
+        for (String datos : listaArtista) {
+            System.out.println("Los Datos son: " + datos);
+        }
     }
 
     public String getNombre_album() {
@@ -44,5 +77,5 @@ private int precio_album;
     public void setPrecio_album(int precio_album) {
         this.precio_album = precio_album;
     }
-    
+
 }
