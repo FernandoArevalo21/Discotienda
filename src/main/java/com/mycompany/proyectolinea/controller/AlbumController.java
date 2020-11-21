@@ -5,6 +5,7 @@
  */
 package com.mycompany.proyectolinea.controller;
 
+import com.mycompany.proyectolinea.pojo.datos;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import java.util.List;
 import javax.inject.Named;
@@ -21,6 +22,7 @@ public class AlbumController {
     private String nombre_album;
     private int precio_album;
     private String artistaSeleccionado;
+    private String id_artista;
 
     public String getArtistaSeleccionado() {
         return artistaSeleccionado;
@@ -48,9 +50,14 @@ public class AlbumController {
     }
 
     public void registroalbum() throws ClassNotFoundException {
-        System.out.println("Entro" + " " + nombre_album + " " + precio_album+" "+artistaSeleccionado);
+        System.out.println("Entro" + " " + nombre_album + " " + precio_album+" "+artistaSeleccionado);  
+        String id_artistas = artistaSeleccionado;
+        String[] parts = id_artistas.split(" ");
+         id_artista = parts[0]; 
         Informacion_Artista ifa = new Informacion_Artista();
         ifa.informacionArtista();
+        datos dt= new datos();
+         dt.cargarAlbum(nombre_album,precio_album,id_artista);
     }
 
     public void mostrarDatos() {

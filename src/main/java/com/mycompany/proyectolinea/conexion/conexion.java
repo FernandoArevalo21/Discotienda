@@ -20,9 +20,9 @@ public class conexion {
         System.out.println("conexión"+conect);
          try {
                 //Cargamos el Driver MySQL
-                Class.forName("com.mysql.cj.jdbc.Driver");
+                Class.forName("com.mysql.jdbc.Driver");
                 //Se hace la conexión con el localhost y con la base de datos creada que en éste caso se llamí agata y "root" que por lo general es el usuario de ingreso
-                conect = DriverManager.getConnection("jdbc:mysql://localhost/disco_tienda?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC","root","");
+                conect = DriverManager.getConnection("jdbc:mysql://localhost/disco_tienda","root","");
               System.out.println("conexion establecida");
             } catch (ClassNotFoundException | SQLException e) {
                 System.out.println("error de conexion");

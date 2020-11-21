@@ -54,4 +54,15 @@ public class datos {
             e.setNextException(e);
         }
     }
+     public void cargarAlbum(String nombre_albun, int precio_albun, String id_artista){
+         try{
+            st = conexion.conexion().createStatement();
+            String query = "INSERT INTO albun(nombre_albun,precio_albun,id_artista) VALUES ('" + nombre_albun + "','" + precio_albun + "','" + id_artista + "')";
+             System.out.println(query);
+            st.executeUpdate(query);
+            System.out.println("Album ingresado");
+         }catch(SQLException e){
+             e.setNextException(e);
+         }
+     }
 }
