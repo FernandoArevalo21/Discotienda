@@ -46,11 +46,6 @@
         <fieldset class="formulario">
             <legend class="datos">Registrar artista</legend>
             <h:form enctype="multipart/form-data">
-               <script type="text/javascript">
-                window.history.forward();
-                function sinVueltaAtras(){ window.history.forward(); }
-                </script>
-            <BODY onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload=""/>
                 <p:outputLabel  value="Nombre artista:" class="informacion"/>
                 <p:inputText   value="#{artistaController.nombre_artista}"/>
                 <p:outputLabel  value="Genero musical:" class="informacion"/>
