@@ -26,7 +26,7 @@ public class AlbumController {
     private String artistaSeleccionado;
     private String id_artista;
 
-    public String getArtistaSeleccionado() {
+    public String getArtistaSeleccionado() {    
         return artistaSeleccionado;
     }
 
@@ -47,6 +47,10 @@ public class AlbumController {
      * Creates a new instance of AlbumController
      */
     public AlbumController() {
+        nombre_album=null;
+        precio_album=0;
+        artistaSeleccionado=null;
+        id_artista=null;
         Informacion_Artista artista = new Informacion_Artista();
         listaArtista = artista.listar();
     }
@@ -56,8 +60,6 @@ public class AlbumController {
         String id_artistas = artistaSeleccionado;
         String[] parts = id_artistas.split(" ");
          id_artista = parts[0]; 
-        Informacion_Artista ifa = new Informacion_Artista();
-        ifa.informacionArtista();
         datos dt= new datos();
          dt.cargarAlbum(nombre_album,precio_album,id_artista);
           FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");

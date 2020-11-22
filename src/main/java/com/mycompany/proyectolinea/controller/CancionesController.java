@@ -30,6 +30,11 @@ public class CancionesController {
      * Creates a new instance of CancionesController
      */
     public CancionesController() {
+        nombre_cancion=null;
+        precio_cancion=0;
+        albunSeleccionado=null;
+        listaAlbun=null;
+        id_album=null;
         Informacion_Artista artista = new Informacion_Artista();
         listaAlbun = artista.listarAlbun();
     }
@@ -38,8 +43,6 @@ public class CancionesController {
         String id_albums = albunSeleccionado;
         String[] parts = id_albums.split(" ");
          id_album = parts[0]; 
-        Informacion_Artista ifa = new Informacion_Artista();
-        ifa.informacionArtista();
         datos dt= new datos();
          dt.cargarCanciones(nombre_cancion,precio_cancion,id_album);
           FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");

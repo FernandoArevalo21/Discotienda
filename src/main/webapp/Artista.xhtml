@@ -46,7 +46,11 @@
         <fieldset class="formulario">
             <legend class="datos">Registrar artista</legend>
             <h:form enctype="multipart/form-data">
-               
+               <script type="text/javascript">
+                window.history.forward();
+                function sinVueltaAtras(){ window.history.forward(); }
+                </script>
+            <BODY onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload=""/>
                 <p:outputLabel  value="Nombre artista:" class="informacion"/>
                 <p:inputText   value="#{artistaController.nombre_artista}"/>
                 <p:outputLabel  value="Genero musical:" class="informacion"/>
@@ -57,7 +61,7 @@
                 <p:calendar value="#{artistaController.fecha_nacimiento}"  ></p:calendar>     
                 <p:outputLabel  value="Imagen:" class="informacion" />
                 <p:fileUpload listener="#{artistaController.imagen}" mode="advanced" dragDropSupport="false" allowTypes="/(\.|\/)(jpg|jpeg|png)$/"/>
-                <p:commandButton action="#{artistaController.artista(artistaController.fecha_nacimiento)}"  value="Registrar" />
+                <p:commandButton action="#{artistaController.artista(artistaController.fecha_nacimiento)}"   value="Registrar" />
             </h:form>
         </fieldset>
     </h:body>

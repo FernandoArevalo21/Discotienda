@@ -45,6 +45,11 @@
             <h1 class="titulo">Disco Stu</h1>
             <div class="menu">
                 <h:form>
+                     <script type="text/javascript">
+                     window.history.forward();
+                     function sinVueltaAtras(){ window.history.forward(); }
+                </script>
+                <BODY onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload=""/>
                 <p:commandButton   value="Login" actionListener="#{indexController.login()}" class="login"/>
                 <p:commandButton   value="Registrarse"  actionListener="#{indexController.registro()}" class="insertar"/>
                 </h:form>

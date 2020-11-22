@@ -11,10 +11,12 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
 
@@ -23,8 +25,8 @@ import org.primefaces.model.file.UploadedFile;
  * @author usuario
  */
 @Named(value = "artistaController")
-@SessionScoped
-public class ArtistaController implements Serializable {
+@RequestScoped
+public class ArtistaController  {
 
     private String nombre_artista;
     private String genero_musical;
@@ -36,6 +38,11 @@ public class ArtistaController implements Serializable {
      * Creates a new instance of ArtistaController
      */
     public ArtistaController() {
+     nombre_artista=null;
+     genero_musical=null;
+     imagen=null;
+     nacionalidad=null;
+     fecha_nacimiento=null;
     }
 
     String ruta = "C:/xampp/imagenesProyectoLinea/";

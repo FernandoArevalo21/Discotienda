@@ -66,15 +66,14 @@ public class Informacion_Artista {
         }
         return lista;
     }
-    public List<String> listarAdministrador(String correo, String password) {
+    public List<String> listarAdministrador() {
         List<String> lista = null;
         try {
             st = conexion.conexion().createStatement();
-          ResultSet rs = st.executeQuery("SELECT*FROM admin where correo='" + correo + "' and password='" + password + "'");
+            ResultSet rs = st.executeQuery("SELECT username, nombre, correo FROM admin");
             System.out.println("Consulta realizada");
             lista = new ArrayList();
             while (rs.next()) {
-                System.out.println(correo);
                 lista.add(rs.getString("nombre") + " " + rs.getString("correo")+" "+rs.getString("username"));
                 //lista.add(rs.getString("nombre_artista"));
             }

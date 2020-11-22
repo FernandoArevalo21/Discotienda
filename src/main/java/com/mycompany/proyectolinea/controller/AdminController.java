@@ -23,13 +23,13 @@ public class AdminController {
      */
     public AdminController() {
         //datosAdministrador = artista.listarAdministrador();
-        datosAdministrador = artista.listarAdministrador(null, null);
-        for (String datos : datosAdministrador) {
+        datosAdministrador = artista.listarAdministrador();
+        /*for (String datos : datosAdministrador) {
             System.out.println(datos);   
-        }  
+        } */ 
     }
     public void cargarDatos() {
-        datosAdministrador = artista.listarAdministrador(null,null);
+        datosAdministrador = artista.listarAdministrador();
         for (String datos : datosAdministrador) {
             System.out.println(datos);   
         }   

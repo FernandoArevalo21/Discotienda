@@ -44,6 +44,11 @@
         <h1 class="titulo">Disco Stu</h1>
         <fieldset class="formulario">
             <legend class="datos">Registrarse</legend>
+             <script type="text/javascript">
+                     window.history.forward();
+                     function sinVueltaAtras(){ window.history.forward(); }
+                </script>
+                <BODY onload="sinVueltaAtras();" onpageshow="if (event.persisted) sinVueltaAtras();" onunload=""/>
             <h:form>
                 <p:outputLabel  value="Nombre:" class="informacion"/>
                 <p:inputText  required="true" value="#{registroController.nombre}"/>

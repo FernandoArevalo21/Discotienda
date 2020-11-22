@@ -7,11 +7,12 @@ package com.mycompany.proyectolinea.controller;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import com.mycompany.proyectolinea.servic.Loginservice;
 import java.io.IOException;
+import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.inject.Named;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 
 /**
@@ -19,20 +20,20 @@ import javax.faces.context.FacesContext;
  * @author usuario
  */
 @Named(value = "loginController")
-@RequestScoped
-public class LoginController {
+@SessionScoped
+public class LoginController implements Serializable {
 String correo;
 String password;
     /**
      * Creates a new instance of LoginController
      */
     public LoginController() {
+        correo=null;
+        password=null;
     }
     public void Login() throws IOException{
     try {
         System.out.println("Entro " + correo + " " + password);
-        Informacion_Artista info= new Informacion_Artista();
-        info.listarAdministrador(correo,password);
         Loginservice service = new Loginservice();
         if(service.VerDatosComprador(correo,password).equals("Admin")){
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
