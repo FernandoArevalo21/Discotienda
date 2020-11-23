@@ -25,8 +25,8 @@ import org.primefaces.model.file.UploadedFile;
  * @author usuario
  */
 @Named(value = "artistaController")
-@RequestScoped
-public class ArtistaController  {
+@SessionScoped
+public class ArtistaController implements Serializable {
 
     private String nombre_artista;
     private String genero_musical;
@@ -37,14 +37,6 @@ public class ArtistaController  {
     /**
      * Creates a new instance of ArtistaController
      */
-    public ArtistaController() {
-     nombre_artista=null;
-     genero_musical=null;
-     imagen=null;
-     nacionalidad=null;
-     fecha_nacimiento=null;
-    }
-
     String ruta = "C:/xampp/imagenesProyectoLinea/";
 
     public void imagen(FileUploadEvent event) {
@@ -60,15 +52,21 @@ public class ArtistaController  {
             System.err.print(e);
         }
     }
-String fecha;
+    String fecha;
+
     public void artista(Date fecha_nacimiento) throws IOException {
-        System.out.println("Entro" + nombre_artista + "" + genero_musical + "" + nacionalidad + "" + fecha_nacimiento+""+ruta);
+        System.out.println("Entro" + nombre_artista + "" + genero_musical + "" + nacionalidad + "" + fecha_nacimiento + "" + ruta);
         SimpleDateFormat dateformat = new SimpleDateFormat("YYY-MM-dd");
-        fecha=(dateformat.format(fecha_nacimiento));
-        
+        fecha = (dateformat.format(fecha_nacimiento));
+
         datos dt = new datos();
-        dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad,fecha);
-         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
+        dt.cagarDatosArtista(nombre_artista, genero_musical, ruta, nacionalidad, fecha);
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
+        nombre_artista = null;
+        genero_musical = null;
+        imagen = null;
+        nacionalidad = null;
+        fecha_nacimiento = null;
     }
 
     public String getNombre_artista() {
@@ -104,13 +102,12 @@ String fecha;
     }
 
     /*public String getFecha_nacimiento() {
-        return fecha_nacimiento;
-    }
+     return fecha_nacimiento;
+     }
 
-    public void setFecha_nacimiento(String fecha_nacimiento) {
-        this.fecha_nacimiento = fecha_nacimiento;
-    }*/
-
+     public void setFecha_nacimiento(String fecha_nacimiento) {
+     this.fecha_nacimiento = fecha_nacimiento;
+     }*/
     public Date getFecha_nacimiento() {
         return fecha_nacimiento;
     }
@@ -118,5 +115,5 @@ String fecha;
     public void setFecha_nacimiento(Date fecha_nacimiento) {
         this.fecha_nacimiento = fecha_nacimiento;
     }
-    
+
 }

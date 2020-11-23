@@ -25,7 +25,8 @@ public class AlbumController {
     private int precio_album;
     private String artistaSeleccionado;
     private String id_artista;
-
+    private List<String> listaArtista;
+ 
     public String getArtistaSeleccionado() {    
         return artistaSeleccionado;
     }
@@ -33,7 +34,7 @@ public class AlbumController {
     public void setArtistaSeleccionado(String artistaSeleccionado) {
         this.artistaSeleccionado = artistaSeleccionado;
     }
-    private List<String> listaArtista;
+   
 
     public List<String> getListaArtista() {
         return listaArtista;
