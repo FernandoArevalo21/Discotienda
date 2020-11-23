@@ -83,20 +83,20 @@ public class Informacion_Artista {
         }
         return lista;
     }
-    public List<DatosComprador> mostrarInformacion() {
-        List<DatosComprador> lista = null ;
+    public ArrayList<DatosComprador> mostrarInformacion() {
+        ArrayList<DatosComprador> lista = new ArrayList<>(); ;
+        String nombre, compra, precio;
         try {
+            
             st = conexion.conexion().createStatement();
             ResultSet rs = st.executeQuery("SELECT nombre_comprador, compra, precio_compra FROM informes");
             System.out.println("Consulta realizada");
             lista = new ArrayList();
             while (rs.next()) {
-                System.out.println(rs.getString("nombre_comprador"));
-                DatosComprador datos = new DatosComprador();
-                datos.setNombreComprador(rs.getString("nombre_comprador"));
-                datos.setCompra(rs.getString("compra"));
-                datos.setPrecioCompra(rs.getShort("precio_compra"));
-                lista.add(datos);
+                nombre = rs.getString("nombre_comprador");
+                compra = rs.getString("compra");
+                precio = rs.getString("precio_compra");
+                lista.add(new DatosComprador(nombre,compra,Integer.parseInt(precio)));
             }
         } catch (SQLException e) {
             e.setNextException(e);
