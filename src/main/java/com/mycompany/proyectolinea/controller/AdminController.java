@@ -49,6 +49,9 @@ public class AdminController {
     public void registroadmin() throws IOException {
         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Registroadministrador.xhtml");
     }
+    public void mostrarDatos() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/MostrarInformacion.xhtml");
+    }
 
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);

@@ -6,6 +6,7 @@
 package com.mycompany.proyectolinea.servic;
 
 import com.mycompany.proyectolinea.conexion.conexion;
+import com.mycompany.proyectolinea.pojo.DatosComprador;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -82,5 +83,24 @@ public class Informacion_Artista {
         }
         return lista;
     }
-    
+    public List<DatosComprador> mostrarInformacion() {
+        List<DatosComprador> lista = null ;
+        try {
+            st = conexion.conexion().createStatement();
+            ResultSet rs = st.executeQuery("SELECT nombre_comprador, compra, precio_compra FROM informes");
+            System.out.println("Consulta realizada");
+            lista = new ArrayList();
+            while (rs.next()) {
+                System.out.println(rs.getString("nombre_comprador"));
+                DatosComprador datos = new DatosComprador();
+                datos.setNombreComprador(rs.getString("nombre_comprador"));
+                datos.setCompra(rs.getString("compra"));
+                datos.setPrecioCompra(rs.getShort("precio_compra"));
+                lista.add(datos);
+            }
+        } catch (SQLException e) {
+            e.setNextException(e);
+        }
+        return lista;
+    }
 }
