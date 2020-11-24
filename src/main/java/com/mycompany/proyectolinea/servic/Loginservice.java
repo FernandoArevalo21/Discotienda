@@ -6,6 +6,7 @@
 package com.mycompany.proyectolinea.servic;
 
 import com.mycompany.proyectolinea.conexion.conexion;
+import com.mycompany.proyectolinea.controller.LoginSession;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -16,6 +17,7 @@ import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -23,8 +25,8 @@ import javax.inject.Named;
  * @author usuario
  */
 public class Loginservice {
-
-    //mirar como hacer pruebas porque no sea podido ejecutar
+   
+    
     Connection conect = null;
     Statement st;
     String cor;

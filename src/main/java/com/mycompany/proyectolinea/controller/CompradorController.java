@@ -6,10 +6,14 @@
 package com.mycompany.proyectolinea.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.Dependent;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -18,7 +22,6 @@ import javax.faces.context.FacesContext;
 @Named(value = "compradorController")
 @Dependent
 public class CompradorController {
-
     /**
      * Creates a new instance of CompradorController
      */

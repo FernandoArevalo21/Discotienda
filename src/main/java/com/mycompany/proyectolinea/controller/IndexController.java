@@ -6,9 +6,13 @@
 package com.mycompany.proyectolinea.controller;
 
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -17,11 +21,18 @@ import javax.faces.context.FacesContext;
 @Named(value = "indexController")
 @RequestScoped
 public class IndexController {
-
+    @Inject
+    private LoginSession loginSession;
     /**
      * Creates a new instance of IndexController
      */
     public IndexController() {
+       
+        
+    }
+    @PostConstruct
+    public void init(){
+         System.out.println("Se crea el objetoIndex"+loginSession.getLlave());
     }
     public void login() throws IOException {
        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Login.xhtml");

@@ -1,11 +1,17 @@
 package com.mycompany.proyectolinea.controller;
 import com.mycompany.proyectolinea.pojo.DatosComprador;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import org.primefaces.model.chart.PieChartModel;
 /**
  *
@@ -14,8 +20,21 @@ import org.primefaces.model.chart.PieChartModel;
 @Named(value = "graficas")
 @RequestScoped
 public class Graficas {
+    @Inject
+private LoginSession loginSession;
+
     private PieChartModel pieModel;
     private List<DatosComprador> datos;
+    @PostConstruct
+    void init(){
+        if(loginSession.getLlave()==null){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(Graficas.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }
     public Graficas() {
         Informacion_Artista artista = new Informacion_Artista();
         datos = artista.mostrarInformacion();

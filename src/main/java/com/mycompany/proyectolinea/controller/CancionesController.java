@@ -10,9 +10,13 @@ import com.mycompany.proyectolinea.pojo.datos;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -21,6 +25,8 @@ import javax.faces.context.FacesContext;
 @Named(value = "cancionesController")
 @RequestScoped
 public class CancionesController {
+    @Inject
+   private LoginSession loginSession;
     private String nombre_cancion;
     private int precio_cancion;
     private String albunSeleccionado;
@@ -29,6 +35,16 @@ public class CancionesController {
     /**
      * Creates a new instance of CancionesController
      */
+    @PostConstruct
+    void init(){
+        if(loginSession.getLlave()==null){
+        try {
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+        } catch (IOException ex) {
+            Logger.getLogger(CancionesController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+    }
     public CancionesController() {
         nombre_cancion=null;
         precio_cancion=0;

@@ -12,6 +12,9 @@ import com.mycompany.proyectolinea.pojo.datos;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -25,18 +28,31 @@ import javax.inject.Inject;
 @RequestScoped
 public class ComprarcancionController {
       @Inject
+   private LoginSession loginSession;
     private LoginController lr;
    private Cancion cancion = new Cancion();
    private ArrayList<Cancion> datos;
    private String cancionSeleccionado;
    private Cancion selectedCancion;
+
     /**
      * Creates a new instance of ComprarcancionController
      */
+   @PostConstruct
+   void init(){
+       if(loginSession.getLlave()==null){
+          try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+          } catch (IOException ex) {
+              Logger.getLogger(ComprarcancionController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+       }
+   }
     public ComprarcancionController() {
         Comprador comprador=new Comprador();   
         datos = comprador.verCancion();
     }
+  
     
     public void ver(String datos,int dato){
         System.out.println("Entro:"+datos+" "+dato);

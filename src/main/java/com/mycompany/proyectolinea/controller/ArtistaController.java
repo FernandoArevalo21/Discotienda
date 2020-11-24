@@ -11,11 +11,15 @@ import java.io.IOException;
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 import org.primefaces.PrimeFaces;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.file.UploadedFile;
@@ -26,6 +30,7 @@ import org.primefaces.model.file.UploadedFile;
  */
 @Named(value = "artistaController")
 @SessionScoped
+
 public class ArtistaController implements Serializable {
 
     private String nombre_artista;
@@ -34,9 +39,27 @@ public class ArtistaController implements Serializable {
     private String nacionalidad;
     private Date fecha_nacimiento;
 
+    @Inject
+private LoginSession loginSession;
+public ArtistaController(){
+    
+}
+    @PostConstruct
+     void init(){
+        if(loginSession.getLlave()==null){
+            try {
+                FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+            } catch (IOException ex) {
+                Logger.getLogger(ArtistaController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
     /**
      * Creates a new instance of ArtistaController
      */
+    
+    
+
     String ruta = "C:/xampp/imagenesProyectoLinea/";
 
     public void imagen(FileUploadEvent event) {

@@ -3,10 +3,15 @@ package com.mycompany.proyectolinea.controller;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -15,6 +20,8 @@ import javax.faces.context.FacesContext;
 @Named(value = "adminController")
 @RequestScoped
 public class AdminController {
+    @Inject
+private LoginSession loginSession;
     private List<String> datosAdministrador;
     Informacion_Artista artista = new Informacion_Artista();
 
@@ -58,6 +65,11 @@ public class AdminController {
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
+    }
+    public void cerrarSesion(){
+        loginSession.setLlave(null);
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.getExternalContext().invalidateSession();
     }
 
     public List<String> getDatosAdministrador() {

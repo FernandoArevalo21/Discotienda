@@ -11,6 +11,9 @@ import com.mycompany.proyectolinea.pojo.datos;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
@@ -25,6 +28,7 @@ import javax.inject.Inject;
 @RequestScoped
 public class PaginaprincipalController {
       @Inject
+    private LoginSession loginSession;
     private LoginController lr;
    private Album album = new Album();
    private List<Album> datos;
@@ -33,6 +37,16 @@ public class PaginaprincipalController {
     /**
      * Creates a new instance of PaginaprincipalController
      */
+    @PostConstruct
+    void init(){
+        if(loginSession.getLlave()==null){
+          try {
+              FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+          } catch (IOException ex) {
+              Logger.getLogger(PaginaprincipalController.class.getName()).log(Level.SEVERE, null, ex);
+          }
+        }
+    }
     public PaginaprincipalController() {
     Comprador comprador=new Comprador();   
     datos=comprador.verAlbum();
