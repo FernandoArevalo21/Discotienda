@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Modificar Artista</title>
+    </h:head>
+    <h:body>
+        <div class="tit">
+            <h1 class="titulo">Disco Stu</h1>
+        </div>
+        <h2 class="titulo">Modificar artista</h2>
+        <div class="contendor">
+            <h:form id="form">
+                <p:growl id="msg"/>
+                <p:dataTable value="#{modificarArtista.datos}" var="datos" class="contendor" editable="true">
+                <p:ajax event="rowEdit" listener="#{modificarArtista.actualizar}" update=":form:msg"/>
+                <p:ajax event="rowEditCancel" listener="#{modificarArtista.cancelar}" update=":form:msg"/>
+                <p:column headerText="Nombre del artista">
+                    <p:cellEditor >
+                            <f:facet name="output">
+                                <h:outputText value="#{datos.nombreArtista}"/>
+                            </f:facet>
+                            <f:facet name="input">
+                                <p:inputText value="#{modificarArtista.nombre}" />
+                            </f:facet>
+                    </p:cellEditor>
+                </p:column>
+                <p:column headerText="Genero Musical">
+                    <p:outputLabel value="#{datos.generoMusical}"/>
+                </p:column>
+                <p:column headerText="Nacionalidad">
+                    <p:outputLabel value="#{datos.nacionalidad}"/>
+                </p:column>
+                <p:column headerText="Fecha de nacimiento">
+                    <p:outputLabel value="#{datos.fechaNacimiento}"/>
+                </p:column>
+                <p:column>
+                    <p:rowEditor/>
+                </p:column>
+            </p:dataTable>
+            </h:form>
+        </div>
+    </h:body>
+</html>
+
