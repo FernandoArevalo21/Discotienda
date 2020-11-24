@@ -80,15 +80,18 @@
                 <p:submenu label="Ver informes de ventas">
                     <p:menuitem value="Ver informes de ventas" action="#{adminController.mosrarGraficas()}"  ajax="false" icon="pi pi-times"/>
                 </p:submenu>
+                <p:submenu label="Modificar Artista">
+                    <p:menuitem value="Modificar Artista" action="#{adminController.editarArtista()}"  ajax="false" icon="pi pi-times"/>
+                </p:submenu>
                 <p:separator /> 
             </p:panelMenu>
         </h:form>
         </div>
-        <div class="informacionPersonal clearfix">
+        <!--<div class="informacionPersonal clearfix">
             <fieldset class="data">
                 <legend class="datosPersonales">Mis datos personales</legend>
             </fieldset>
-        </div>
+        </div>-->
     </h:body>
 </html>
 
