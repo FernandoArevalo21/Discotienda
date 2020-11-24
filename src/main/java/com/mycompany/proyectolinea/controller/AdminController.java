@@ -65,10 +65,7 @@ private LoginSession loginSession;
     public void editarArtista() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/ModificarArtista.xhtml");
     }
-    public void addMessage(String summary, String detail) {
-        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
-        FacesContext.getCurrentInstance().addMessage(null, message);
-    }
+    
     public void cerrarSesion(){
         loginSession.setLlave(null);
         FacesContext context = FacesContext.getCurrentInstance();
