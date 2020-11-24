@@ -90,12 +90,15 @@ public class Informacion_Artista {
             
             st = conexion.conexion().createStatement();
             ResultSet rs = st.executeQuery("SELECT nombre_comprador, compra, precio_compra FROM informes");
-            System.out.println("Consulta realizada");
+            System.out.println("Consulta realizada!!!");
             lista = new ArrayList();
             while (rs.next()) {
                 nombre = rs.getString("nombre_comprador");
                 compra = rs.getString("compra");
                 precio = rs.getString("precio_compra");
+                System.out.println(rs.getString("nombre_comprador"));
+                System.out.println(rs.getString("compra"));
+                System.out.println(rs.getString("precio_compra"));
                 lista.add(new DatosComprador(nombre,compra,Integer.parseInt(precio)));
             }
         } catch (SQLException e) {

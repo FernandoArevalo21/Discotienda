@@ -52,7 +52,9 @@ public class AdminController {
     public void mostrarDatos() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/MostrarInformacion.xhtml");
     }
-
+    public void mosrarGraficas() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/graficas.xhtml");
+    }
     public void addMessage(String summary, String detail) {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary, detail);
         FacesContext.getCurrentInstance().addMessage(null, message);
