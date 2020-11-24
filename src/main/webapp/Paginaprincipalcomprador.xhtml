@@ -5,46 +5,83 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One" rel="stylesheet"></link>
         <title>Compras</title>
+        <style>
+            body{
+                background: rgb(223,232,231);
+            }
+            h1.titulo{
+                text-align: center;
+                font-family: 'Shadows Into Light', cursive;
+                font-size: 60px;
+            }
+            h2.titulo{
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                font-size: 26px;
+                color: black;
+            }
+            div.contendor{
+                margin: 0 auto;
+                width: 659px;
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                font-size: 15px;
+                color: black;
+            }
+            .datos{
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                color: black;
+            }
+        </style>
     </h:head>   
     <h:body>
-        <h:form>
-            <p:dataTable var="datos" value="#{paginaprincipalController.datos}">
-                <f:facet name="header">
-                    Compras
-                </f:facet>
-                <p:column style="width:16px">
-                    <p:rowToggler />
-                </p:column>
-                <p:column headerText="Nombre album">
-                    <h:outputText value="#{datos.nombre_albun}" />
-                </p:column>
-                <p:column headerText="Precio album">
-                    <h:outputText value="#{datos.precio_albun}" />
-                </p:column>    
-                <p:rowExpansion>
-                    <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
-                        <f:facet name="header">
-                            <!--p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/--> 
-                        </f:facet>
+        <div class="tit">
+            <h1 class="titulo">Disco Stu</h1>
+        </div>
+        <h2 class="titulo">Comprar Albun</h2>
+        <div>
+            <h:form>
+                <p:dataTable var="datos" value="#{paginaprincipalController.datos}">
+                    <f:facet name="header">
+                        Compras
+                    </f:facet>
+                    <p:column style="width:16px">
+                        <p:rowToggler />
+                    </p:column>
+                    <p:column headerText="Nombre album" class="datos">
+                        <h:outputText value="#{datos.nombre_albun}" />
+                    </p:column>
+                    <p:column headerText="Precio album" class="datos">
+                        <h:outputText value="#{datos.precio_albun}" />
+                    </p:column>    
+                    <p:rowExpansion>
+                        <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                            <f:facet name="header">
+                                <!--p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/--> 
+                            </f:facet>
 
-                        <h:outputText value="Nombre album:" />
-                        <h:outputText  value="#{datos.nombre_albun}" />
+                            <h:outputText value="Nombre album:" />
+                            <h:outputText  value="#{datos.nombre_albun}" />
 
-                        <h:outputText value="Precio album" />
-                        <h:outputText   value="#{datos.precio_albun}" />
+                            <h:outputText value="Precio album" />
+                            <h:outputText   value="#{datos.precio_albun}" />
 
-                        <h:outputText value="Nombre artista" />
-                        <h:outputText value="#{datos.nombre_artista}" />
-                        
-                        <p:commandButton value="Comprar" actionListener="#{paginaprincipalController.mostrar(datos.nombre_albun,datos.precio_albun)}"></p:commandButton>
-                    </p:panelGrid>
-                </p:rowExpansion>
-            </p:dataTable>
-            <br></br>
-            <p:commandButton value="Comprar Cancion" actionListener="#{paginaprincipalController.boton()}"></p:commandButton>          
-                <p:commandButton value="Cerrar Sesión"></p:commandButton>      
-        </h:form>
+                            <h:outputText value="Nombre artista" />
+                            <h:outputText value="#{datos.nombre_artista}" />
+
+                            <p:commandButton value="Comprar" actionListener="#{paginaprincipalController.mostrar(datos.nombre_albun,datos.precio_albun)}" class="datos"></p:commandButton>
+                        </p:panelGrid>
+                    </p:rowExpansion>
+                </p:dataTable>
+                <br></br>
+            </h:form>
+        </div>
     </h:body>
 </html>
 

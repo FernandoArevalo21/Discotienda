@@ -5,10 +5,48 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
+        <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+        <link href="https://fonts.googleapis.com/css2?family=Fredoka+One" rel="stylesheet"></link>
+        <title>Cancion</title>
+        <style>
+            body{
+                background: rgb(223,232,231);
+            }
+            h1.titulo{
+                text-align: center;
+                font-family: 'Shadows Into Light', cursive;
+                font-size: 60px;
+            }
+            h2.titulo{
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                font-size: 26px;
+                color: black;
+            }
+            div.contendor{
+                margin: 0 auto;
+                width: 659px;
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                font-size: 15px;
+                color: black;
+            }
+            .datos{
+                text-align: center;
+                font-family: 'Fredoka One', cursive;
+                color: black;
+            }
+        </style>
     </h:head>
     <h:body>
-        <h:form>
+        <div class="tit">
+            <h1 class="titulo">Disco Stu</h1>
+        </div>
+        <h2 class="titulo">Comprar Cancion</h2>
+        <div class="contendor">
+            <h:form>
             <p:dataTable var="datos" value="#{comprarcancionController.datos}">
                 <f:facet name="header">
                     Comprar canciones
@@ -16,10 +54,10 @@
                 <p:column style="width:16px">
                     <p:rowToggler />
                 </p:column>
-                <p:column headerText="Nombre de la cancion">
+                <p:column headerText="Nombre de la cancion" class="datos">
                     <h:outputText value="#{datos.nombre_cancion}" />
                 </p:column>
-                <p:column headerText="Precio de la cancion">
+                <p:column headerText="Precio de la cancion" class="datos">
                     <h:outputText value="#{datos.precio_cancion}" />
                 </p:column>    
                 <p:rowExpansion>
@@ -42,9 +80,8 @@
                 </p:rowExpansion>
             </p:dataTable>
             <br></br>
-            <p:commandButton value="Comprar Album" actionListener="#{comprarcancionController.boton()}"></p:commandButton>    
-                <p:commandButton value="Cerrar Sesión"></p:commandButton>      
         </h:form>
+        </div>
     </h:body>
 </html>
 

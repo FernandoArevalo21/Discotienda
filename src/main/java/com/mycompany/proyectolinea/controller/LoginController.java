@@ -40,7 +40,7 @@ String password;
         if(service.VerDatosComprador(correo,password).equals("Admin")){
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
         }else if(service.VerDatosComprador(correo,password).equals("comprador")){
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Paginaprincipalcomprador.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Comprador.xhtml");
         }else{
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Error.xhtml"); 
         }

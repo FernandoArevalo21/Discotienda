@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light" rel="stylesheet"></link>
+            <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+            <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+                <link href="https://fonts.googleapis.com/css2?family=Special+Elite" rel="stylesheet"></link>
+        <title>Comprador</title>
+        <style>
+            .clearfix::before,
+            .clearfix::after {
+                content: " ";
+                display: table;
+            }
+
+            .clearfix::after {
+                clear: both;
+            }
+            body{
+                background: rgb(223,232,231);
+            }
+            h1.titulo{
+                text-align: center;
+                font-family: 'Shadows Into Light', cursive;
+                font-size: 60px;
+            }
+            div.contenedor{
+                margin-left: 20px;
+                float:left;
+                width: 300px;
+                height: 372px;
+            }
+            div.informacionPersonal{
+                float: right;
+                width: 887px;
+                height: 389px;
+                background:rgb(171,241,232);
+                margin-right: 20px;
+            }
+            .data{
+                margin-left: 20px;
+                margin-right: 20px;
+            }
+            .informacionPersonal{
+                padding-top: 20px;
+                font-family: 'Special Elite', cursive;
+                color: black;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h1 class="titulo">Comprador</h1>
+        <div class="contenedor clearfix">
+            <h:form>
+                <p:growl>
+                    <p:autoUpdate />
+                </p:growl>
+                <p:panelMenu style="width:300px">
+                    <p:submenu label="Comprar Albun">
+                        <p:menuitem value="Comprar Albun" icon="pi pi-refresh" action="#{compradorController.comprarAlbun()}" />
+                    </p:submenu>
+                    <p:submenu label="Comprar Cancion">
+                        <p:menuitem value="Comprar Cancion" action="#{compradorController.comprarCancion()}"  ajax="false" icon="pi pi-times"/>
+                    </p:submenu>
+                </p:panelMenu>
+            </h:form>
+        </div>
+        <div class="informacionPersonal clearfix">
+            <fieldset class="data">
+                <legend class="datosPersonales">Mis datos personales</legend>
+            </fieldset>
+        </div>
+    </h:body>
+</html>
+
