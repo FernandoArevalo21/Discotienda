@@ -8,11 +8,13 @@ package com.mycompany.proyectolinea.controller;
 import com.mycompany.proyectolinea.pojo.Album;
 import com.mycompany.proyectolinea.pojo.Comprador;
 import com.mycompany.proyectolinea.pojo.datos;
+import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 
 /**
  *
@@ -25,33 +27,23 @@ public class PaginaprincipalController {
    private List<Album> datos;
    private String artistaSeleccionado;
    private Album selectedAlbum;
-   private String correos;
     /**
      * Creates a new instance of PaginaprincipalController
      */
     public PaginaprincipalController() {
     Comprador comprador=new Comprador();   
     datos=comprador.verAlbum();
-    }
-    public void recibir(String correo){
-        System.out.println("Correo::"+correo);
-        PaginaprincipalController pagina = new PaginaprincipalController();
-        correos=correo;
+    
     }
     public void mostrar(String datos,int dato){
         System.out.println("Entro"+" "+datos+" "+dato);
-        
         datos dt= new datos();
         dt.cargarinformacion(datos, datos, dato);
     }
-
-    public String getCorreos() {
-        return correos;
+    public void boton() throws IOException{
+        FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Comprarcancion.xhtml");
     }
-
-    public void setCorreos(String correos) {
-        this.correos = correos;
-    }
+    
     public Album getAlbum() {
         return album;
     }

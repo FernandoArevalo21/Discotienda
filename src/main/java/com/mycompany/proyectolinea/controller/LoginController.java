@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.mycompany.proyectolinea.controller;
+import com.mycompany.proyectolinea.pojo.Comprador;
 import com.mycompany.proyectolinea.servic.Informacion_Artista;
 import com.mycompany.proyectolinea.servic.Loginservice;
 import java.io.IOException;
@@ -31,10 +32,7 @@ String password;
         correo=null;
         password=null;
     }
-    public void dato()throws IOException{
-        PaginaprincipalController pagina = new PaginaprincipalController();
-         pagina.recibir(correo);
-    }
+
     public void Login() throws IOException{
     try {
         System.out.println("Entro " + correo + " " + password);
