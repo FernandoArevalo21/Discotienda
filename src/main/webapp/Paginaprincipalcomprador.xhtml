@@ -5,21 +5,44 @@
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Compras</title>
     </h:head>   
     <h:body>
         <h:form>
-            <p:dataTable value="#{paginaprincipalController.datos}" var="datos">
-                <p:column headerText="Nombre del album">
-                    <p:outputLabel value="#{datos.nombre_albun}"/>
+            <p:dataTable var="datos" value="#{paginaprincipalController.datos}">
+                <f:facet name="header">
+                    Compras
+                </f:facet>
+                <p:column style="width:16px">
+                    <p:rowToggler />
                 </p:column>
-                <p:column headerText="Precio del album">
-                    <p:outputLabel value="#{datos.precio_albun}"/>
+                <p:column headerText="Nombre album">
+                    <h:outputText value="#{datos.nombre_albun}" />
                 </p:column>
-                <p:column headerText="Nombre del artista">
-                    <p:outputLabel value="#{datos.nombre_artista}"/>
-                </p:column>
+                <p:column headerText="Precio album">
+                    <h:outputText value="#{datos.precio_albun}" />
+                </p:column>    
+                <p:rowExpansion>
+                    <p:panelGrid  columns="2" columnClasses="label,value" style="width:300px">
+                        <f:facet name="header">
+                            <!--p:graphicImage name="demo/images/car/#{car.brand}-big.gif"/--> 
+                        </f:facet>
+
+                        <h:outputText value="Nombre album:" />
+                        <h:outputText  value="#{datos.nombre_albun}" />
+
+                        <h:outputText value="Precio album" />
+                        <h:outputText   value="#{datos.precio_albun}" />
+
+                        <h:outputText value="Nombre artista" />
+                        <h:outputText value="#{datos.nombre_artista}" />
+                        
+                        <p:commandButton value="Comprar" actionListener="#{paginaprincipalController.mostrar(datos.nombre_albun,datos.precio_albun)}"></p:commandButton>
+                    </p:panelGrid>
+                </p:rowExpansion>
             </p:dataTable>
+            <p:commandButton value="Comprar Cancion"></p:commandButton>          
+                <p:commandButton value="Cerrar Sesión"></p:commandButton>      
         </h:form>
     </h:body>
 </html>

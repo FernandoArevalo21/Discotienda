@@ -31,6 +31,10 @@ String password;
         correo=null;
         password=null;
     }
+    public void dato()throws IOException{
+        PaginaprincipalController pagina = new PaginaprincipalController();
+         pagina.recibir(correo);
+    }
     public void Login() throws IOException{
     try {
         System.out.println("Entro " + correo + " " + password);
@@ -38,7 +42,7 @@ String password;
         if(service.VerDatosComprador(correo,password).equals("Admin")){
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
         }else if(service.VerDatosComprador(correo,password).equals("comprador")){
-            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/index.xhtml");
+            FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Paginaprincipalcomprador.xhtml");
         }else{
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Error.xhtml"); 
         }

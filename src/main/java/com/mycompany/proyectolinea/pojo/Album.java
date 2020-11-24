@@ -10,6 +10,7 @@ package com.mycompany.proyectolinea.pojo;
  * @author usuario
  */
 public class Album {
+ 
     private String nombre_albun;
     private int precio_albun;
     private String nombre_artista;
@@ -19,6 +20,8 @@ public class Album {
         this.precio_albun = precio_albun;
         this.nombre_artista = nombre_artista;
     }
+
+  
    public Album(){
        
    }

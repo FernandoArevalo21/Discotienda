@@ -7,12 +7,12 @@ package com.mycompany.proyectolinea.controller;
 
 import com.mycompany.proyectolinea.pojo.Album;
 import com.mycompany.proyectolinea.pojo.Comprador;
-import java.util.ArrayList;
-import java.util.Arrays;
+import com.mycompany.proyectolinea.pojo.datos;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Spliterator;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 /**
  *
@@ -23,6 +23,9 @@ import javax.enterprise.context.RequestScoped;
 public class PaginaprincipalController {
    private Album album = new Album();
    private List<Album> datos;
+   private String artistaSeleccionado;
+   private Album selectedAlbum;
+   private String correos;
     /**
      * Creates a new instance of PaginaprincipalController
      */
@@ -30,7 +33,25 @@ public class PaginaprincipalController {
     Comprador comprador=new Comprador();   
     datos=comprador.verAlbum();
     }
-    
+    public void recibir(String correo){
+        System.out.println("Correo::"+correo);
+        PaginaprincipalController pagina = new PaginaprincipalController();
+        correos=correo;
+    }
+    public void mostrar(String datos,int dato){
+        System.out.println("Entro"+" "+datos+" "+dato);
+        
+        datos dt= new datos();
+        dt.cargarinformacion(datos, datos, dato);
+    }
+
+    public String getCorreos() {
+        return correos;
+    }
+
+    public void setCorreos(String correos) {
+        this.correos = correos;
+    }
     public Album getAlbum() {
         return album;
     }
@@ -47,6 +68,19 @@ public class PaginaprincipalController {
         this.datos = datos;
     }
 
-   
-   
+    public String getArtistaSeleccionado() {
+        return artistaSeleccionado;
+    }
+
+    public void setArtistaSeleccionado(String artistaSeleccionado) {
+        this.artistaSeleccionado = artistaSeleccionado;
+    }
+
+    public Album getSelectedAlbum() {
+        return selectedAlbum;
+    }
+
+    public void setSelectedAlbum(Album selectedAlbum) {
+        this.selectedAlbum = selectedAlbum;
+    }
 }
