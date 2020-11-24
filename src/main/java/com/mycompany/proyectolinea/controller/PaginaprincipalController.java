@@ -15,6 +15,7 @@ import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -23,6 +24,8 @@ import javax.faces.context.FacesContext;
 @Named(value = "paginaprincipalController")
 @RequestScoped
 public class PaginaprincipalController {
+      @Inject
+    private LoginController lr;
    private Album album = new Album();
    private List<Album> datos;
    private String artistaSeleccionado;
@@ -38,7 +41,7 @@ public class PaginaprincipalController {
     public void mostrar(String datos,int dato){
         System.out.println("Entro"+" "+datos+" "+dato);
         datos dt= new datos();
-        dt.cargarinformacion(datos, datos, dato);
+        dt.cargarinformacion(lr.getCorreo(), datos, dato);
     }
     public void boton() throws IOException{
         FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Comprarcancion.xhtml");

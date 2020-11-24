@@ -20,7 +20,7 @@ import javax.faces.context.FacesContext;
 @Named(value = "albumController")
 @RequestScoped
 public class AlbumController {
-
+  
     private String nombre_album;
     private int precio_album;
     private String artistaSeleccionado;

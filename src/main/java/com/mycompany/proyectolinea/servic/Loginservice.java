@@ -15,6 +15,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ViewScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 /**
@@ -29,6 +30,7 @@ public class Loginservice {
     String cor;
     String pass;
     String rol;
+    String user;
      conexion conexion = new conexion();
  
     public String VerDatosComprador(String correo, String password) throws SQLException {
@@ -38,10 +40,13 @@ public class Loginservice {
             while (rs.next()) {
                 cor = rs.getString("correo");
                 pass = rs.getString("password");
-                System.out.println(String.format("%s,%s", cor, pass));
+                user = rs.getString ("username");
+                System.out.println(String.format("%s,%s,%s", cor, pass,user));
             }
             if(cor.equalsIgnoreCase(correo)&& pass.equalsIgnoreCase(password)){
                 rol="comprador";
+                 FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put(user,(String.format("%s,%s,%s", cor, pass,user)) );
             }
         } catch (Exception ex) {
             try {
@@ -49,10 +54,13 @@ public class Loginservice {
                 while (rs.next()) {
                     cor = rs.getString("correo");
                     pass = rs.getString("password");
-                    System.out.println(String.format("%s,%s", cor, pass));
+                      user = rs.getString ("username");
+                    System.out.println(String.format("%s,%s,%s", cor, pass,user));
                 }
                 if(cor.equalsIgnoreCase(correo)&& pass.equalsIgnoreCase(password)){
                 rol="Admin";
+                FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put(user,(String.format("%s,%s,%s", cor, pass,user)) );
             }
             } catch (Exception ex1) {
                 rol=null;
@@ -60,4 +68,13 @@ public class Loginservice {
         }
         return rol;
     }
+
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+    
 }

@@ -78,7 +78,7 @@ public class datos {
      public void cargarinformacion(String correo,String compra, int precio_compra ){
          try{
             st = conexion.conexion().createStatement();
-            String query = "INSERT INTO informes(nombre_comprador,compra,precio_compra) VALUES ('a','" +compra+ "','" +precio_compra+ "')";
+            String query = "INSERT INTO informes(nombre_comprador,compra,precio_compra) VALUES ('" +correo+ "','" +compra+ "','" +precio_compra+ "')";
             st.executeUpdate(query);
             System.out.println("Informe ingresado");
          }catch(SQLException e){

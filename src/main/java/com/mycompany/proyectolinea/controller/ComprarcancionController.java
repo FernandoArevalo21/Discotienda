@@ -15,6 +15,7 @@ import java.util.List;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Inject;
 
 /**
  *
@@ -23,6 +24,8 @@ import javax.faces.context.FacesContext;
 @Named(value = "comprarcancionController")
 @RequestScoped
 public class ComprarcancionController {
+      @Inject
+    private LoginController lr;
    private Cancion cancion = new Cancion();
    private ArrayList<Cancion> datos;
    private String cancionSeleccionado;
@@ -39,7 +42,7 @@ public class ComprarcancionController {
         System.out.println("Entro:"+datos+" "+dato);
         
         datos dt= new datos();
-        dt.cargarinformacion(datos, datos, dato);
+        dt.cargarinformacion(lr.getCorreo(), datos, dato);
     }
     public void boton() throws IOException{
          FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Paginaprincipalcomprador.xhtml");

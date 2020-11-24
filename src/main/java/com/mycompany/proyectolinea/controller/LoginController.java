@@ -10,8 +10,10 @@ import com.mycompany.proyectolinea.servic.Loginservice;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
@@ -32,14 +34,33 @@ String password;
         correo=null;
         password=null;
     }
-
+@PostConstruct
+void init(){
+    String name=this.correo;
+}
     public void Login() throws IOException{
     try {
         System.out.println("Entro " + correo + " " + password);
         Loginservice service = new Loginservice();
         if(service.VerDatosComprador(correo,password).equals("Admin")){
+            FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put(service.getUser(), service);
+            service = (Loginservice) context.getExternalContext().getSessionMap().get("");
+            Map<String, Object> map= context.getExternalContext().getSessionMap();
+            for(Map.Entry<String, Object> entrySet : map.entrySet()){
+                String key= entrySet.getKey();
+                System.out.println("Llave"+key);
+            }
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Administrador.xhtml");
         }else if(service.VerDatosComprador(correo,password).equals("comprador")){
+             FacesContext context = FacesContext.getCurrentInstance();
+            context.getExternalContext().getSessionMap().put(service.getUser(), service);
+            service = (Loginservice) context.getExternalContext().getSessionMap().get("");
+            Map<String, Object> map= context.getExternalContext().getSessionMap();
+            for(Map.Entry<String, Object> entrySet : map.entrySet()){
+                String key= entrySet.getKey();
+                System.out.println("Llave"+key);
+            }
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Comprador.xhtml");
         }else{
             FacesContext.getCurrentInstance().getExternalContext().redirect("/ProyectoLinea/faces/Error.xhtml"); 
